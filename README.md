@@ -90,7 +90,7 @@ Average position of actual move: 7.391959798994975
 *Note:* There's also a `tournaments/:t/training/playernotations` route that was previously used to annotate which player wrote the game notation. The idea was to make sure that the training and evaluation can avoid using players who's handwriting was present in the training set. That said, it seems a lot easier to just get sufficient training data to make sure we can just use different tournaments for training and test data sets.
  
   
-## Directories
+## Code Structure
 
 * `training` new training and evaluation code, heavily work in progress
 	* `classifier` different classifiers that classify images of moves.
@@ -101,10 +101,6 @@ Average position of actual move: 7.391959798994975
 
 ## TODO list
 
-* Upload to github
-	* Don't check in environment vars
-	* Check all the files whether it's appropriate to check in
-	* Check all the move images
 * Figure out current state of training data / number of exported games etc.
 * Train again on current training data
 	* Document progress with number of games trained on
