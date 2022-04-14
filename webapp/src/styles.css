@@ -1,0 +1,26 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+html, body, .app-container { height: 100%; }
+body { margin: 0; font-family: 'Roboto', sans-serif; }
+
+.page-with-list {
+  padding-bottom: 1.5rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.page-with-list table {
+  width: 100%;
+}
+
+.page-with-list .mat-row {
+  cursor: pointer;
+}
+
+.page-with-list button[mat-fab] {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+}

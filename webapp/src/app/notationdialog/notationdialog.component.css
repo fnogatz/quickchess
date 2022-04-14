@@ -1,0 +1,14 @@
+.notation-dialog {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.notation-dialog mat-dialog-content {
+  border: 2px inset #ccc;
+  flex-grow: 1;
+  max-height: 100%;
+  margin: 5px 0px 5px 0px;
+  padding: 0;
+  position: relative;
+}

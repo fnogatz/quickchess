@@ -1,0 +1,24 @@
+<form class="gameselector">
+  <mat-form-field>
+    <mat-chip-list #chipList>
+      <mat-chip *ngIf="selectedGame" [removable]="true" (removed)="unselectGame()">
+        {{getGameLabel(selectedGame)}}
+        <mat-icon matChipRemove>cancel</mat-icon>
+      </mat-chip>
+      <input 
+        #gameInput
+        placeholder="Which game does this belong to?" 
+        type="text" 
+        matInput
+        [matChipInputFor]="chipList"
+        [formControl]="gameControl"
+        [matAutocomplete]="auto">
+    </mat-chip-list>
+    
+    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" [displayWith]="getGameLabel" (optionSelected)="selectGame($event)">
+      <mat-option *ngFor="let option of gameAutocompleteOptions | async" [value]="option">
+        {{getGameLabel(option)}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+</form>

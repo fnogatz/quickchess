@@ -1,0 +1,24 @@
+<p>
+  This tool can be used to specify which player wrote which notation. This is only
+  used when exporting training data to ensure that the test dataset can contain
+  a handwriting style that was not already seen in the training dataset.
+</p>
+<form>
+  <mat-form-field>
+    <input matInput #playername placeholder="Player name" value="">
+  </mat-form-field>
+  <button mat-raised-button (click)="findPlayer(playername.value)">Find games</button>
+</form>
+
+<table class="playernotations"> 
+  <tr *ngFor="let notations of notationsByGame.values(); trackBy: index">
+    <td *ngFor="let notation of notations.slice(0, 2); trackBy: notation?.id">
+      <div>
+        <span style="color: red">{{notation.writer}}</span>
+        <button mat-raised-button (click)="setWriter(notation.id, playername.value)">Written by {{playername.value}}</button>
+        <button mat-raised-button (click)="openNotationDialog(notation.pictureId)">Edit notation</button>
+      </div>
+      <notationcanvas #canvas [picture]="{id: notation.pictureId}" [notations]="[notation]"></notationcanvas>
+    </td>
+  </tr>
+</table>

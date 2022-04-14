@@ -1,0 +1,22 @@
+<div class="notation-dialog" >
+  <!--<h2 mat-dialog-title>{{picture.filename}} {{picture.id}}</h2>-->
+
+  <div>
+    <button mat-raised-button (click)="exportTrainingData()">Export training data</button>
+    <button mat-raised-button (click)="exportTrainingCsv()">Export training csv</button>
+
+    <button mat-raised-button (click)="canvas.rotation = (canvas.rotation + 90) % 360">Rotate</button>
+    <button mat-raised-button (click)="canvas.zoomToMove(0)">Zoom to move</button>
+  </div>
+
+  <mat-dialog-content>
+    <notationcanvas #canvas [picture]="picture" [notations]="notations"></notationcanvas>
+  </mat-dialog-content>
+
+  <gameselector [tournamentId]="tournamentId" [(gameId)]="gameId"></gameselector>
+
+  <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-button mat-dialog-close (click)="save()">Save</button>
+  </mat-dialog-actions>
+</div>

@@ -1,0 +1,29 @@
+<p>
+  This tool shows the move images for a single, not-yet exported game and allows you to export its move images.
+  You can also use it to tag move images as bad quality.
+</p>
+<ul>
+  <li>Unusable: Not showing the correct move at all / not readable for humans</li>
+  <li>Bad: Extemely hard to read, e.g. parts striked-through</li>
+  <li>Okay: Borderline, might be better not to include this image in training</li>
+</ul>
+
+<table class="exportmoves" *ngIf="game"> 
+  <tr *ngFor="let move of game.moves; let moveIndex = index">
+    <td>{{moveIndex}}. {{translateMove(move)}}</td>
+    <td *ngFor="let notation of game.notations; let notationIndex = index">
+      <canvas id="movecanvas-{{notationIndex}}-{{moveIndex}}" width="70" height="30"></canvas>
+    </td>
+    <td *ngFor="let notation of game.notations; let notationIndex = index">
+      <button mat-raised-button (click)="notation.moveImages[moveIndex].quality = 0">Unusable</button>
+      <button mat-raised-button (click)="notation.moveImages[moveIndex].quality = 30">Bad</button>
+      <button mat-raised-button (click)="notation.moveImages[moveIndex].quality = 70">Okay</button>
+    </td>
+  </tr>
+</table>
+<div>
+  <button mat-raised-button (click)="findNextGame()">Next game</button>
+  <button mat-raised-button (click)="export('trainingdata')">Export for training data</button>
+  <button mat-raised-button (click)="export('testdata')">Export for test data</button>
+</div>
+<br><br><br><br><br>

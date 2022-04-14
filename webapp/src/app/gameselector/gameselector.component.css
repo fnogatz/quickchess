@@ -1,0 +1,7 @@
+.gameselector mat-form-field {
+  width: 100%;
+}
+
+.gameselector input{
+  width: 50%;
+}

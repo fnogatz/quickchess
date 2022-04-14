@@ -1,0 +1,15 @@
+<div class="page-with-list">
+  <h2>Tournaments</h2>
+
+  <!-- TODO: Show loading spinner -->
+  <table mat-table [dataSource]="tournaments" class="mat-elevation-z8">
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="onRowClicked(row.id)"></tr>
+  </table>
+
+</div>

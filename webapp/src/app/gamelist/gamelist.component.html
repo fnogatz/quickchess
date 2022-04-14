@@ -1,0 +1,24 @@
+<div class="page-with-list">
+  <h2>{{(databaseName$ | async) || '&nbsp;'}}</h2>
+
+  <!-- TODO: Show loading spinner -->
+  <table mat-table [dataSource]="games$" class="mat-elevation-z8">
+    <ng-container matColumnDef="white">
+      <th mat-header-cell *matHeaderCellDef> White </th>
+      <td mat-cell *matCellDef="let element"> {{element.headers.White}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="black">
+      <th mat-header-cell *matHeaderCellDef> Black </th>
+      <td mat-cell *matCellDef="let element"> {{element.headers.Black}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="result">
+      <th mat-header-cell *matHeaderCellDef> Result </th>
+      <td mat-cell *matCellDef="let element"> {{element.headers.Result}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="onRowClicked(row.id)"></tr>
+  </table>
+</div>
